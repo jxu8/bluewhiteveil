@@ -46,7 +46,7 @@ lastci = len(casefiles) - 1
 
 # generate case links
 caselist = "\n\t\t\t".join(
-    ['<div><a href="/study/case_{0:d}.html">Case {0:d}</a></div>'.format(v[0]) for v in casefiles])
+    ['<div><a href="./study/case_{0:d}.html">Case {0:d}</a></div>'.format(v[0]) for v in casefiles])
 
 # set in template and write
 f_cases = t_cases.replace('$CASELIST$', caselist)
@@ -64,7 +64,7 @@ for ci, case in enumerate(casefiles):
     thumbs = [v.replace(f_study, f_thumbs) for v in files]
     labels = [file_label(v) for v in files]
     caseimages = "".join(
-        ['<td style="vertical-align: top; "width="{0:d}" height="{0:d}"><a href="/{1:s}" target="_blank"><img src="/{2:s}" border="0" /><br />{3:s}</td>'.format(
+        ['<td style="vertical-align: top; "width="{0:d}" height="{0:d}"><a href="./{1:s}" target="_blank"><img src="./{2:s}" border="0" /><br />{3:s}</td>'.format(
             thumb_size, imf, tf, il
         ) for imf, tf, il in zip(files, thumbs, labels)]
     )
