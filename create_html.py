@@ -18,12 +18,12 @@ im_parts = [
 last_case = 294
 surveylink = '<iframe id="JotFormIFrame-222076621564151" title="Blue White Veil v2" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allowfullscreen="false" allow="geolocation; microphone; camera" src="https://form.jotform.com/222076621564151" frameborder="0" style=" min-width: 100%; min-height:100%; border:none;" scrolling="yes" > </iframe>'
 # function for labeling
-def file_label(f):
-    l = 'Non-Polarized'
-    if 'P' in f:
-        if 'N' not in f:
-            l = 'Polarized'
-    return l
+#def file_label(f):
+    #l = 'Non-Polarized'
+    #if 'P' in f:
+        #if 'N' not in f:
+            #l = 'Polarized'
+    #return l
 
 # load templates
 with open('templates/case.html') as f:
@@ -62,12 +62,17 @@ for ci, case in enumerate(casefiles):
         nextnum = casefiles[0][0]
     files = case[1:]
     thumbs = [v.replace(f_study, f_thumbs) for v in files]
-    labels = [file_label(v) for v in files]
+    #labels = [file_label(v) for v in files]
     caseimages = "".join(
+        ['<td style="vertical-align: top; "width="{0:d}" height="{0:d}"><a href="../{1:s}" target="_blank"><img src="../{2:s}" border="0" /><br /></td>'.format(
+            thumb_size, imf, tf
+        ) for imf, tf in zip(files, thumbs)]
+    )
+    """caseimages = "".join(
         ['<td style="vertical-align: top; "width="{0:d}" height="{0:d}"><a href="../{1:s}" target="_blank"><img src="../{2:s}" border="0" /><br />{3:s}</td>'.format(
             thumb_size, imf, tf, il
         ) for imf, tf, il in zip(files, thumbs, labels)]
-    )
+    ) """
     f_case = t_case.replace('$CASEIMAGES$', caseimages)
     f_case = f_case.replace('$CASENUMBER$', str(num))
     f_case = f_case.replace('$NEXTCASE$', str(nextnum))
