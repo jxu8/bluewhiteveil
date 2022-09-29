@@ -15,8 +15,9 @@ im_parts = [
     'CASE{0:d}NP.jpg',
     'CASE{0:d}P.jpg',
 ]
-last_case = 294
-surveylink = '<iframe id="JotFormIFrame-222076621564151" title="Blue White Veil v2" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allowfullscreen="false" allow="geolocation; microphone; camera" src="https://form.jotform.com/222076621564151" frameborder="0" style=" min-width: 100%; min-height:100%; border:none;" scrolling="yes" > </iframe>'
+last_case = 231
+surveylink1 = '<iframe id="JotFormIFrame-222076621564151" title="Blue White Veil v2" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allowfullscreen="false" allow="geolocation; microphone; camera" src="https://form.jotform.com/222076621564151" frameborder="0" style=" min-width: 100%; min-height:100%; border:none;" scrolling="yes" > </iframe>'
+surveylink2 = '<iframe id="JotFormIFrame-222625606604048" title="Save Progress" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allowfullscreen="false" allow="geolocation; microphone; camera" src="https://form.jotform.com/222625606604048" frameborder="0" style=" min-width: 100%; min-height:100%; border:none;" scrolling="yes" > </iframe>'
 # function for labeling
 #def file_label(f):
     #l = 'Non-Polarized'
@@ -76,6 +77,7 @@ for ci, case in enumerate(casefiles):
     f_case = t_case.replace('$CASEIMAGES$', caseimages)
     f_case = f_case.replace('$CASENUMBER$', str(num))
     f_case = f_case.replace('$NEXTCASE$', str(nextnum))
-    f_case = f_case.replace('$SURVEYLINK$', surveylink)
+    f_case = f_case.replace('$SURVEYLINK1$', surveylink1)
+    f_case = f_case.replace('$SURVEYLINK2$', surveylink2)
     with open(f_study + 'case_{0:d}.html'.format(num), 'w') as f:
         f.write(f_case)
